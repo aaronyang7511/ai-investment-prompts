@@ -1,0 +1,25 @@
+{
+  "envId": "your-env-id",
+  "version": "2.0",
+  "functionRoot": "",
+  "functions": [],
+  "framework": {
+    "name": "nuxt",
+    "plugins": {
+      "client": {
+        "use": "@cloudbase/framework-plugin-website",
+        "inputs": {
+          "buildCommand": "echo '静态网站，无需构建'",
+          "outputPath": "./",
+          "cloudPath": "/",
+          "ignore": [
+            ".git",
+            "node_modules",
+            "cloudbase.json",
+            "README.md"
+          ]
+        }
+      }
+    }
+  }
+} 

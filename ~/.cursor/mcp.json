@@ -1,0 +1,11 @@
+{
+    "mcpServers": {
+        "chatlog": {
+            "url": "http://127.0.0.1:5030/sse"
+        },
+        "edgeone-pages-mcp-server": {
+            "command": "npx",
+            "args": ["edgeone-pages-mcp"]
+        }
+    }
+} 

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高一截粉丝服务体验6群 | 每日精华</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        .highlight-text {
+            background: linear-gradient(120deg, rgba(255,236,210,0.6) 0%, rgba(252,182,159,0.6) 100%);
+            padding: 0 4px;
+            border-radius: 4px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 9999px;
+        }
+        .quote {
+            border-left: 4px solid #0066cc;
+            padding-left: 1rem;
+            font-style: italic;
+            color: #555;
+            margin: 1rem 0;
+        }
+        .card {
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            background-color: #fff;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .generate-button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.2s;
+        }
+        .generate-button:hover {
+            background-color: #0055aa;
+        }
+        .generate-button:disabled {
+            background-color: #99c2ff;
+            cursor: not-allowed;
+        }
+        #image-preview {
+            margin-top: 20px;
+            display: none;
+        }
+        #download-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: #e6f2ff;
+            color: #0066cc;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        #download-link:hover {
+            background-color: #cce6ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="w-full max-w-[750px] mx-auto" style="max-width: 750px;">
+        <div id="report-content">
+            <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-6 px-8 rounded-b-lg shadow-lg mb-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h1 class="text-2xl md:text-3xl font-bold">高一截粉丝服务体验6群</h1>
+                        <p class="text-blue-100 mt-1">社群日报 · 2025年5月16日</p>
+                    </div>
+                    <div class="hidden md:block">
+                        <i class="fas fa-chart-line text-4xl text-blue-200"></i>
+                    </div>
+                </div>
+                <div class="mt-3 bg-blue-800 bg-opacity-40 p-3 rounded-lg">
+                    <p class="text-sm"><i class="fas fa-bullhorn mr-2"></i>今日市场震荡分化，机器人产业链、PEEK材料爆发；钨相关、核聚变概念强势；主要热点快速轮动，量能持续萎缩。</p>
+                </div>
+            </header>
+
+            <main class="px-8">
+                <!-- 精华亮点荟萃 -->
+                <section class="mb-8">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-star text-yellow-500 mr-2"></i>精华亮点荟萃
+                    </h2>
+                    <div class="bg-white rounded-lg p-4 shadow-sm">
+                        <p class="mb-4 text-gray-700">今日社群活跃度高，多位投资者积极讨论市场走势与个股操作。以下是今日关键话题：</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>高磊老师早中晚三次市场策略分析与提醒</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>钨、医药板块机会点捕捉与讨论</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>投资理念交流：止损策略、投资书籍与交易心态</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>航运板块调整与黄金定投机会</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>股市"祖训"更新与讨论</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- 市场分析 -->
+                <section class="mb-8">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-chart-bar text-blue-600 mr-2"></i>市场分析与策略
+                    </h2>
+                    <div class="card p-5 mb-4">
+                        <h3 class="font-bold text-gray-700 mb-2">早盘观点</h3>
+                        <p class="text-gray-600 mb-3">盘面上沪深两市震荡走弱、创业板指数领跌，两市仅成交1.15万亿、缩量1643亿，盘面情绪陷入阶段负反馈；热点板块不聚焦、飞速轮动，市场缺乏持续性机会。</p>
+                        <div class="quote">
+                            "短线来看指数在多重利好（贸易和谈、降准、创立科技引导基金等）条件下并没引领市场走出合理的正反馈，日线指标KDJ死叉出现分歧信号...在频繁利好反跌的行情背景下，降低仓位配置管住手，等情绪回暖再跟随。"
+                        </div>
+                    </div>
+
+                    <div class="card p-5 mb-4">
+                        <h3 class="font-bold text-gray-700 mb-2">尾盘总结</h3>
+                        <p class="text-gray-600 mb-3">今天市场乏善可陈，上证全天飘绿，中证1000微微飘红，上证跌破5日线有转弱迹象，中证1000昨天跌破5日线今天小修复，成交缩量600多亿。</p>
+                        <div class="text-gray-700 bg-blue-50 p-3 rounded mb-2">
+                            <p><i class="fas fa-lightbulb text-yellow-500 mr-1"></i><strong>策略建议：</strong> 维持3400阶段顶部区域判断，保持低仓位，近期考虑以防御为主，关注黄金、医药、消费相关板块。</p>
+                        </div>
+                        <p class="text-sm text-right text-gray-500">贡献者: 高磊</p>
+                    </div>
+                </section>
+
+                <!-- 板块机会点 -->
+                <section class="mb-8">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-bolt text-yellow-600 mr-2"></i>热点板块与机会点
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div class="card p-4">
+                            <div class="flex items-center mb-2">
+                                <div class="bg-yellow-100 p-2 rounded-full mr-3">
+                                    <i class="fas fa-fire text-yellow-600"></i>
+                                </div>
+                                <h3 class="font-bold">金属钨板块</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-2">高老师周一尾盘提醒关注【金属钨】，今日该板块全线爆发，多只个股涨停。稀土小金属逻辑持续有效，今日成为市场最强热点。</p>
+                            <div class="badge bg-green-100 text-green-800">强势领涨</div>
+                        </div>
+                        
+                        <div class="card p-4">
+                            <div class="flex items-center mb-2">
+                                <div class="bg-blue-100 p-2 rounded-full mr-3">
+                                    <i class="fas fa-pills text-blue-600"></i>
+                                </div>
+                                <h3 class="font-bold">医药板块</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-2">今天有突破走法，机构表示2025年国内创新药产业有望迎来拐点，产业运行趋势由资本驱动转向盈利驱动。</p>
+                            <div class="badge bg-blue-100 text-blue-800">新兴机会</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div class="card p-4">
+                            <div class="flex items-center mb-2">
+                                <div class="bg-red-100 p-2 rounded-full mr-3">
+                                    <i class="fas fa-ship text-red-600"></i>
+                                </div>
+                                <h3 class="font-bold">航运港口</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-2">今天航运板块普遍下跌，建议继续观望，盯着5日线，可以到下周一、二再看，逻辑暂未走完。</p>
+                            <div class="badge bg-red-100 text-red-800">大幅调整</div>
+                        </div>
+                        
+                        <div class="card p-4">
+                            <div class="flex items-center mb-2">
+                                <div class="bg-purple-100 p-2 rounded-full mr-3">
+                                    <i class="fas fa-robot text-purple-600"></i>
+                                </div>
+                                <h3 class="font-bold">机器人产业链</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-2">今日全线爆发，社群中讨论热度高。高老师点评："AI资金心不齐，机器人资金每次都很坚决"。</p>
+                            <div class="badge bg-purple-100 text-purple-800">强势热点</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <p class="text-sm text-gray-700 italic mb-0">今日市场热点快速轮动，机器人产业链、PEEK材料、可控核聚变等概念表现活跃，但整体量能萎缩，建议耐心等待明确领涨核心。</p>
+                        <p class="text-sm text-right text-gray-500 mt-2">贡献者: 高一截助理, 高磊</p>
+                    </div>
+                </section>
+
+                <!-- 投资理念与社群智慧 -->
+                <section class="mb-8">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-brain text-purple-600 mr-2"></i>投资理念与社群智慧
+                    </h2>
+                    
+                    <div class="card p-5 mb-4">
+                        <h3 class="font-bold text-gray-700 mb-3">股市"祖训"更新版</h3>
+                        <p class="text-gray-600 mb-3">群内分享了股市"祖训"更新版，其中首条即为"不要买半导体"。高磊老师也补充了一条自己的经验："当你想买算力的时候，请买机器人"。</p>
+                        <div class="quote">
+                            "AI资金心不齐，机器人资金每次都很坚决。AI开始落地因此有分歧，机器人纯想象空间更大。"
+                        </div>
+                    </div>
+                    
+                    <div class="card p-5 mb-4">
+                        <h3 class="font-bold text-gray-700 mb-3">交易心态与执行力</h3>
+                        <p class="text-gray-600 mb-2">群友分享了关于投资心态的独到见解：</p>
+                        <ul class="list-disc pl-5 text-gray-700 mb-3">
+                            <li>"一天看盘越少，越能赚钱，现在都不咋看了。买了就放那，晚上看看趋势有没有走坏。"</li>
+                            <li>"看多了就管不住自己手，之后被气死。"</li>
+                            <li>"能锻炼到越跌越兴奋，越眼红；越涨越心寒，也不敢下手。那你离盈利就差不多了。"</li>
+                        </ul>
+                        <p class="text-gray-700 font-semibold">高磊老师强调："不看财报，搞技术分析，到最后，其实更好执行，方法来回就那些，执行才是最重要的。"</p>
+                        <p class="text-sm text-right text-gray-500">贡献者: 高磊, 阿森, 哈ʘᴗʘ</p>
+                    </div>
+                </section>
+
+                <!-- 每日金句 -->
+                <section class="mb-8">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-quote-left text-green-600 mr-2"></i>每日金句
+                    </h2>
+                    <div class="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-lg shadow-sm">
+                        <p class="text-xl text-center text-gray-700 font-medium italic mb-4">"蜡烛图技术是基础，但到最后，<span class="highlight-text">执行才是最重要的</span>。"</p>
+                        <p class="text-right text-gray-500">—— 高磊</p>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="px-8 py-6 text-center text-gray-500 text-sm">
+                <p>高一截粉丝服务体验6群 · 社群日报 · 2025年5月16日</p>
+                <p class="mt-1">本日报内容仅供参考，投资有风险，入市需谨慎</p>
+            </footer>
+        </div>
+
+        <!-- 生成图片按钮 -->
+        <div class="text-center my-8">
+            <button id="generate-image-btn" class="generate-button">
+                <i class="fas fa-image mr-2"></i>生成图片
+            </button>
+        </div>
+
+        <!-- 图片预览区域 -->
+        <div id="image-preview" class="px-8 mb-10">
+            <div class="bg-white p-4 rounded-lg shadow-sm">
+                <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-photo-film text-blue-600 mr-2"></i>图片预览
+                </h3>
+                <div class="text-center">
+                    <img id="preview-img" class="max-w-full border border-gray-200 rounded-lg shadow-sm" alt="社群日报图片">
+                    <div class="mt-4">
+                        <a id="download-link" href="#" download="高一截粉丝服务体验6群-日报-2025-05-16.png" class="inline-block">
+                            <i class="fas fa-download mr-2"></i>下载图片
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateBtn = document.getElementById('generate-image-btn');
+            const reportContent = document.getElementById('report-content');
+            const imagePreview = document.getElementById('image-preview');
+            const previewImg = document.getElementById('preview-img');
+            const downloadLink = document.getElementById('download-link');
+            
+            generateBtn.addEventListener('click', function() {
+                // 更改按钮状态
+                generateBtn.disabled = true;
+                generateBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>生成中...';
+                
+                // 截取页面生成图片
+                setTimeout(() => {
+                    html2canvas(reportContent, {
+                        scale: 2, // 提高图片质量
+                        useCORS: true, // 允许加载跨域图片
+                        backgroundColor: '#f8f9fa', // 设置背景色
+                        scrollX: 0,
+                        scrollY: 0,
+                        windowWidth: document.documentElement.offsetWidth,
+                        windowHeight: document.documentElement.offsetHeight
+                    }).then(canvas => {
+                        // 将canvas转为图片URL
+                        const imgData = canvas.toDataURL('image/png');
+                        
+                        // 显示预览
+                        previewImg.src = imgData;
+                        imagePreview.style.display = 'block';
+                        
+                        // 设置下载链接
+                        downloadLink.href = imgData;
+                        
+                        // 恢复按钮状态
+                        generateBtn.disabled = false;
+                        generateBtn.innerHTML = '<i class="fas fa-image mr-2"></i>重新生成';
+                        
+                        // 滚动到预览区域
+                        imagePreview.scrollIntoView({ behavior: 'smooth' });
+                    }).catch(error => {
+                        console.error('生成图片失败:', error);
+                        alert('生成图片失败，请重试');
+                        generateBtn.disabled = false;
+                        generateBtn.innerHTML = '<i class="fas fa-image mr-2"></i>生成图片';
+                    });
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html> 

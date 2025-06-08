@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI投资提示词生成器 - 个股分析、行业研究、市场分析 | 免费在线工具</title>
+    <meta name="description" content="免费在线AI投资提示词生成器，支持个股深度分析、行业趋势研究、市场走势分析。一键生成专业投资分析提示词，完美适配DeepSeek、ChatGPT等AI模型。">
+    <meta name="keywords" content="投资提示词生成器,个股分析,行业研究,市场分析,DeepSeek,ChatGPT,AI投资工具">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="AI投资提示词生成器 - 免费专业投资分析工具">
+    <meta property="og:description" content="一键生成个股、行业、市场分析提示词，让AI成为您的投资分析助手">
+    <meta property="og:type" content="website">
+    
+    <link rel="canonical" href="https://ai-invest-prompts.com/generator">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#10b981',
+                        accent: '#f59e0b',
+                        dark: '#1f2937',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'pulse-soft': 'pulseSoft 2s ease-in-out infinite',
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulseSoft {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .scenario-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        
+        .scenario-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .scenario-card.active {
+            border-color: #3b82f6;
+            background: linear-gradient(135deg, #dbeafe 0%, #e0f2fe 100%);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+        
+        .prompt-output {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-left: 4px solid #3b82f6;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            white-space: pre-wrap;
+            line-height: 1.7;
+        }
+        
+        .copy-button {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .copy-button:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .step-indicator {
+            position: relative;
+        }
+        
+        .step-indicator::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -50px;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6 0%, transparent 100%);
+            transform: translateY(-50%);
+        }
+        
+        .step-indicator:last-child::after {
+            display: none;
+        }
+        
+        .animate-bounce-soft {
+            animation: bounce 2s infinite;
+        }
+        
+        @media (max-width: 768px) {
+            .step-indicator::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-gradient-to-br from-blue-50 via-white to-purple-50 min-h-screen">
+    
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-100">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <button onclick="window.location.href='index.html'" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+                    <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-brain text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold text-gray-900">AI投资助手</span>
+                        <p class="text-xs text-gray-500">提示词生成器</p>
+                    </div>
+                </button>
+                
+                <div class="flex items-center space-x-4">
+                    <button onclick="window.location.href='index.html'" class="text-gray-600 hover:text-primary transition-colors font-medium">
+                        <i class="fas fa-home mr-2"></i>
+                        返回首页
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Page Header -->
+        <div class="text-center mb-12 animate-fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                AI投资提示词生成器
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                选择投资场景，填写关键参数，一键生成专业的AI分析提示词
+            </p>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="flex justify-center mb-12">
+            <div class="flex items-center space-x-4 md:space-x-8">
+                <div class="step-indicator flex items-center">
+                    <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold shadow-lg">
+                        1
+                    </div>
+                    <span class="ml-3 font-medium text-gray-700">选择场景</span>
+                </div>
+                <div class="step-indicator flex items-center">
+                    <div class="w-10 h-10 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-bold">
+                        2
+                    </div>
+                    <span class="ml-3 font-medium text-gray-500">填写参数</span>
+                </div>
+                <div class="step-indicator flex items-center">
+                    <div class="w-10 h-10 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-bold">
+                        3
+                    </div>
+                    <span class="ml-3 font-medium text-gray-500">生成使用</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario Selection -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">选择分析场景</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                
+                <!-- Individual Stock Analysis -->
+                <div onclick="selectScenario('stock')" id="stock-card" class="scenario-card glass-card rounded-2xl p-8 border-2 border-gray-200 text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-chart-line text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">个股深度分析</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        深度分析单只股票的基本面、技术面和投资价值
+                    </p>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">财务分析</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">技术指标</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">估值评估</span>
+                    </div>
+                </div>
+                
+                <!-- Industry Research -->
+                <div onclick="selectScenario('industry')" id="industry-card" class="scenario-card glass-card rounded-2xl p-8 border-2 border-gray-200 text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-green-500 to-teal-600 rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-industry text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">行业趋势研究</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        研究行业趋势、竞争格局和投资机会
+                    </p>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">发展趋势</span>
+                        <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">竞争格局</span>
+                        <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">政策影响</span>
+                    </div>
+                </div>
+                
+                <!-- Market Analysis -->
+                <div onclick="selectScenario('market')" id="market-card" class="scenario-card glass-card rounded-2xl p-8 border-2 border-gray-200 text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-globe text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">市场走势分析</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        分析大盘走势、资金流向和市场情绪
+                    </p>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">趋势判断</span>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">资金流向</span>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">情绪指标</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Parameter Input Section -->
+        <div id="input-section" class="mb-12 hidden">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">填写分析参数</h2>
+            
+            <!-- Stock Analysis Form -->
+            <div id="stock-form" class="form-section hidden">
+                <div class="glass-card rounded-2xl p-8 shadow-lg">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-3">
+                                <i class="fas fa-search mr-2 text-primary"></i>
+                                股票代码/名称 *
+                            </label>
+                            <input type="text" id="stockCode" placeholder="例如：000001 或 平安银行" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-3">
+                                <i class="fas fa-calendar mr-2 text-primary"></i>
+                                分析周期
+                            </label>
+                            <select id="stockPeriod" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                                <option value="近期">近期表现（1-3个月）</option>
+                                <option value="中期">中期趋势（3-12个月）</option>
+                                <option value="长期">长期投资（1年以上）</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-3">
+                                <i class="fas fa-bullseye mr-2 text-primary"></i>
+                                关注重点
+                            </label>
+                            <select id="stockFocus" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                                <option value="基本面">基本面分析</option>
+                                <option value="技术面">技术面分析</option>
+                                <option value="估值">估值水平</option>
+                                <option value="综合">综合分析</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-3">
+                                <i class="fas fa-shield-alt mr-2 text-primary"></i>
+                                风险偏好
+                            </label>
+                            <select id="stockRisk" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                                <option value="保守">保守型投资者</option>
+                                <option value="稳健">稳健型投资者</option>
+                                <option value="积极">积极型投资者</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Industry Analysis Form -->
+            <div id="industry-form" class="form-section hidden">
+                <div class="glass-card rounded-2xl p-8 shadow-lg">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-3">
+                                <i class="fas fa-industry mr-2 text-primary"></i>
+                                行业名称 *
+                            </label>
+                            <input type="text" id="industryName" placeholder="例如：新能源汽车、医药生物、人工智能" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-3">
+                                <i class="fas fa-cube mr-2 text-primary"></i>
+                                分析维度
+                            </label>
+                            <select id="industryDimension" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                                <option value="发展趋势">发展趋势分析</option>
+                                <option value="政策影响">政策影响评估</option>
+                                <option value="竞争格局">竞争格局研究</option>
+                                <option value="投资机会">投资机会识别</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-3">
+                                <i class="fas fa-clock mr-2 text-primary"></i>
+                                时间范围
+                            </label>
+                            <select id="industryTimeframe" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                                <option value="短期">短期（1年内）</option>
+                                <option value="中期">中期（1-3年）</option>
+                                <option value="长期">长期（3年以上）</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-3">
+                                <i class="fas fa-balance-scale mr-2 text-primary"></i>
+                                对比基准
+                            </label>
+                            <input type="text" id="industryBenchmark" placeholder="例如：传统汽车行业、海外同行业" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Market Analysis Form -->
+            <div id="market-form" class="form-section hidden">
+                <div class="glass-card rounded-2xl p-8 shadow-lg">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-3">
+                                <i class="fas fa-map mr-2 text-primary"></i>
+                                市场范围
+                            </label>
+                            <select id="marketScope" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                                <option value="A股整体">A股整体市场</option>
+                                <option value="创业板">创业板</option>
+                                <option value="科创板">科创板</option>
+                                <option value="主板">主板市场</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-3">
+                                <i class="fas fa-crosshairs mr-2 text-primary"></i>
+                                分析重点
+                            </label>
+                            <select id="marketFocus" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                                <option value="趋势判断">趋势判断</option>
+                                <option value="资金流向">资金流向</option>
+                                <option value="估值水平">估值水平</option>
+                                <option value="情绪指标">情绪指标</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-3">
+                                <i class="fas fa-chart-area mr-2 text-primary"></i>
+                                时间周期
+                            </label>
+                            <select id="marketPeriod" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                                <option value="短期">短期走势（1-3个月）</option>
+                                <option value="中期">中期趋势（3-12个月）</option>
+                                <option value="长期">长期周期（1年以上）</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-3">
+                                <i class="fas fa-eye mr-2 text-primary"></i>
+                                关注因素
+                            </label>
+                            <input type="text" id="marketFactors" placeholder="例如：政策变化、流动性、外部环境" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Generate Button -->
+            <div class="text-center mt-8">
+                <button onclick="generatePrompt()" class="bg-primary text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg animate-pulse-soft">
+                    <i class="fas fa-magic mr-3"></i>
+                    生成AI提示词
+                </button>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div id="output-section" class="hidden">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">生成的AI提示词</h2>
+            
+            <div class="glass-card rounded-2xl shadow-xl overflow-hidden">
+                <div class="bg-gradient-to-r from-primary to-purple-600 px-8 py-6">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <i class="fas fa-robot text-white text-2xl mr-3"></i>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">专业投资分析提示词</h3>
+                                <p class="text-blue-100">Ready to use with AI models</p>
+                            </div>
+                        </div>
+                        <button onclick="copyPrompt()" class="copy-button bg-white bg-opacity-20 text-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-30 transition-all">
+                            <i class="fas fa-copy mr-2"></i>
+                            复制提示词
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="p-8">
+                    <div id="prompt-content" class="prompt-output p-6 rounded-xl text-gray-800 border border-gray-200"></div>
+                </div>
+            </div>
+            
+            <!-- Usage Instructions -->
+            <div class="mt-8 glass-card rounded-2xl p-8 border border-blue-200">
+                <h4 class="text-xl font-bold text-blue-900 mb-4 flex items-center">
+                    <i class="fas fa-lightbulb mr-3"></i>
+                    使用说明
+                </h4>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h5 class="font-semibold text-blue-800 mb-3">📝 如何使用</h5>
+                        <ol class="text-blue-700 space-y-2 text-sm">
+                            <li><strong>1. 复制提示词：</strong>点击上方"复制提示词"按钮</li>
+                            <li><strong>2. 打开AI模型：</strong>访问DeepSeek、ChatGPT、Claude等</li>
+                            <li><strong>3. 粘贴使用：</strong>将提示词粘贴到对话框中</li>
+                            <li><strong>4. 获得分析：</strong>AI将生成专业投资分析报告</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h5 class="font-semibold text-blue-800 mb-3">🤖 支持的AI模型</h5>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">DeepSeek</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">ChatGPT</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">Claude</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">通义千问</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">文心一言</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Regenerate Button -->
+            <div class="text-center mt-8">
+                <button onclick="resetGenerator()" class="border-2 border-primary text-primary px-8 py-3 rounded-full font-semibold hover:bg-primary hover:text-white transition-all">
+                    <i class="fas fa-redo mr-2"></i>
+                    重新生成
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex items-center justify-center space-x-3 mb-4">
+                <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-brain text-white"></i>
+                </div>
+                <span class="text-lg font-bold">AI投资助手</span>
+            </div>
+            <p class="text-gray-400 mb-4">专业免费的投资提示词工具</p>
+            <div class="border-t border-gray-800 pt-6">
+                <p class="text-gray-400 text-sm">
+                    &copy; 2024 AI投资助手. 保留所有权利. | 投资有风险，使用需谨慎
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        let currentScenario = null;
+
+        // Update progress steps
+        function updateProgressSteps(step) {
+            const steps = [
+                { id: 1, text: '选择场景' },
+                { id: 2, text: '填写参数' },
+                { id: 3, text: '生成使用' }
+            ];
+            
+            steps.forEach((stepData, index) => {
+                const stepElement = document.querySelector(`.step-indicator:nth-child(${index + 1}) .w-10`);
+                const textElement = document.querySelector(`.step-indicator:nth-child(${index + 1}) span`);
+                
+                if (stepData.id <= step) {
+                    stepElement.className = 'w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold shadow-lg';
+                    textElement.className = 'ml-3 font-medium text-gray-700';
+                } else {
+                    stepElement.className = 'w-10 h-10 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-bold';
+                    textElement.className = 'ml-3 font-medium text-gray-500';
+                }
+            });
+        }
+
+        // Select scenario
+        function selectScenario(scenario) {
+            // Clear previous selection
+            document.querySelectorAll('.scenario-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Hide all forms
+            document.querySelectorAll('.form-section').forEach(form => {
+                form.classList.add('hidden');
+            });
+            
+            // Activate selected scenario
+            document.getElementById(scenario + '-card').classList.add('active');
+            document.getElementById('input-section').classList.remove('hidden');
+            document.getElementById(scenario + '-form').classList.remove('hidden');
+            
+            currentScenario = scenario;
+            updateProgressSteps(2);
+            
+            // Hide output section
+            document.getElementById('output-section').classList.add('hidden');
+            
+            // Smooth scroll to form
+            document.getElementById('input-section').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // Generate prompt
+        function generatePrompt() {
+            if (!currentScenario) {
+                showNotification('请先选择分析场景', 'warning');
+                return;
+            }
+
+            let prompt = '';
+            
+            if (currentScenario === 'stock') {
+                const stockCode = document.getElementById('stockCode').value.trim();
+                const period = document.getElementById('stockPeriod').value;
+                const focus = document.getElementById('stockFocus').value;
+                const risk = document.getElementById('stockRisk').value;
+                
+                if (!stockCode) {
+                    showNotification('请输入股票代码或名称', 'error');
+                    return;
+                }
+                
+                prompt = `请你作为一名专业的股票分析师，对股票"${stockCode}"进行深度分析。
+
+分析要求：
+- 分析周期：${period}
+- 分析重点：${focus}
+- 风险偏好：${risk}
+
+请从以下维度进行分析：
+
+1. **基本面分析**
+   - 公司业务模式和核心竞争力
+   - 财务数据分析（营收、利润、现金流、ROE等）
+   - 行业地位和市场份额
+   - 管理层能力和公司治理
+
+2. **技术面分析**
+   - 当前股价趋势和支撑阻力位
+   - 主要技术指标解读（MA、MACD、RSI等）
+   - 成交量变化和资金流向
+   - 短中长期走势判断
+
+3. **估值分析**
+   - PE、PB、PS等估值指标
+   - 与同行业对比分析
+   - 历史估值水平比较
+   - 合理估值区间判断
+
+4. **风险评估**
+   - 主要投资风险识别
+   - 行业和政策风险
+   - 财务风险和经营风险
+   - 市场风险和流动性风险
+
+5. **投资建议**
+   - 综合评级（买入/持有/卖出）
+   - 目标价位和持有期建议
+   - 适合的投资者类型
+   - 关键关注点和跟踪指标
+
+请用专业、客观的语言进行分析，并给出具体的数据支撑和逻辑推理。`;
+                
+            } else if (currentScenario === 'industry') {
+                const industryName = document.getElementById('industryName').value.trim();
+                const dimension = document.getElementById('industryDimension').value;
+                const timeframe = document.getElementById('industryTimeframe').value;
+                const benchmark = document.getElementById('industryBenchmark').value.trim();
+                
+                if (!industryName) {
+                    showNotification('请输入行业名称', 'error');
+                    return;
+                }
+                
+                prompt = `请你作为一名资深的行业研究分析师，对"${industryName}"行业进行深度研究分析。
+
+研究要求：
+- 分析维度：${dimension}
+- 时间范围：${timeframe}
+${benchmark ? `- 对比基准：${benchmark}` : ''}
+
+请从以下方面进行系统性分析：
+
+1. **行业概况**
+   - 行业定义和分类
+   - 市场规模和增长趋势
+   - 产业链结构分析
+   - 行业发展阶段判断
+
+2. **发展趋势分析**
+   - 技术发展趋势和创新方向
+   - 市场需求变化和驱动因素
+   - 商业模式演进
+   - 未来3-5年发展预测
+
+3. **政策环境影响**
+   - 相关政策法规梳理
+   - 政策对行业的影响程度
+   - 政策风险和机遇分析
+   - 监管趋势预判
+
+4. **竞争格局研究**
+   - 行业集中度和竞争结构
+   - 主要参与者分析
+   - 竞争优势和壁垒
+   - 新进入者威胁
+
+5. **投资机会识别**
+   - 细分领域投资价值
+   - 产业链投资机会
+   - 重点关注的上市公司
+   - 投资时机和策略建议
+
+6. **风险因素评估**
+   - 行业周期性风险
+   - 技术替代风险
+   - 政策变化风险
+   - 竞争加剧风险
+
+请提供数据支撑和案例分析，并给出明确的投资建议和风险提示。`;
+                
+            } else if (currentScenario === 'market') {
+                const scope = document.getElementById('marketScope').value;
+                const focus = document.getElementById('marketFocus').value;
+                const period = document.getElementById('marketPeriod').value;
+                const factors = document.getElementById('marketFactors').value.trim();
+                
+                prompt = `请你作为一名专业的市场策略分析师，对${scope}进行全面的市场分析。
+
+分析要求：
+- 分析重点：${focus}
+- 时间周期：${period}
+${factors ? `- 重点关注：${factors}` : ''}
+
+请从以下维度进行深度分析：
+
+1. **市场趋势判断**
+   - 当前市场所处阶段（牛市/熊市/震荡市）
+   - 主要指数走势分析
+   - 技术面支撑和阻力位
+   - 中长期趋势方向判断
+
+2. **资金流向分析**
+   - 主力资金进出情况
+   - 北向资金和外资动向
+   - 机构资金配置偏好
+   - 散户资金参与度
+
+3. **估值水平评估**
+   - 整体市场估值水平（PE、PB）
+   - 与历史估值比较
+   - 国际市场估值对比
+   - 估值修复空间分析
+
+4. **市场情绪指标**
+   - 投资者情绪温度计
+   - VIX恐慌指数分析
+   - 融资融券数据
+   - 新股发行和破发率
+
+5. **宏观环境影响**
+   - 货币政策和流动性
+   - 经济基本面数据
+   - 政策变化影响
+   - 国际市场联动
+
+6. **板块轮动分析**
+   - 热点板块和主线逻辑
+   - 板块间资金流动
+   - 风格切换趋势
+   - 防御性板块表现
+
+7. **投资策略建议**
+   - 仓位配置建议
+   - 板块选择策略
+   - 风险控制措施
+   - 操作节奏把握
+
+请结合具体数据和图表分析，给出清晰的市场判断和投资建议。`;
+            }
+            
+            // Display generated prompt
+            document.getElementById('prompt-content').textContent = prompt;
+            document.getElementById('output-section').classList.remove('hidden');
+            updateProgressSteps(3);
+            
+            // Show success notification
+            showNotification('提示词生成成功！', 'success');
+            
+            // Scroll to output section
+            document.getElementById('output-section').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // Copy prompt to clipboard
+        function copyPrompt() {
+            const promptContent = document.getElementById('prompt-content').textContent;
+            
+            navigator.clipboard.writeText(promptContent).then(function() {
+                // Show copy success feedback
+                const copyButton = document.querySelector('.copy-button');
+                const originalHTML = copyButton.innerHTML;
+                copyButton.innerHTML = '<i class="fas fa-check mr-2"></i>已复制';
+                copyButton.style.background = '#10b981';
+                
+                setTimeout(() => {
+                    copyButton.innerHTML = originalHTML;
+                    copyButton.style.background = '';
+                }, 2000);
+                
+                showNotification('提示词已复制到剪贴板！', 'success');
+            }).catch(function(err) {
+                showNotification('复制失败，请手动复制提示词内容', 'error');
+            });
+        }
+
+        // Reset generator
+        function resetGenerator() {
+            // Clear all selections
+            document.querySelectorAll('.scenario-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Hide sections
+            document.getElementById('input-section').classList.add('hidden');
+            document.getElementById('output-section').classList.add('hidden');
+            
+            // Clear form inputs
+            document.querySelectorAll('input, select').forEach(input => {
+                if (input.type === 'text') {
+                    input.value = '';
+                } else {
+                    input.selectedIndex = 0;
+                }
+            });
+            
+            currentScenario = null;
+            updateProgressSteps(1);
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            showNotification('已重置，请重新选择场景', 'info');
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            const icons = {
+                success: 'fa-check-circle',
+                error: 'fa-times-circle',
+                warning: 'fa-exclamation-triangle',
+                info: 'fa-info-circle'
+            };
+            const colors = {
+                success: 'bg-green-500',
+                error: 'bg-red-500',
+                warning: 'bg-yellow-500',
+                info: 'bg-blue-500'
+            };
+            
+            notification.className = `fixed top-4 right-4 ${colors[type]} text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300 flex items-center`;
+            notification.innerHTML = `<i class="fas ${icons[type]} mr-2"></i>${message}`;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Animate out and remove
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Initialize
+        updateProgressSteps(1);
+    </script>
+</body>
+</html> 

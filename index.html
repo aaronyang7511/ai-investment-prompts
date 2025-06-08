@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI投资提示词模板库 - 专业投资分析提示词 | DeepSeek专用</title>
+    <meta name="description" content="专业的AI投资提示词模板库，涵盖个股分析、行业研究、市场分析等场景。一键复制即用，完美适配DeepSeek、ChatGPT等AI模型。">
+    <meta name="keywords" content="AI投资,提示词模板,DeepSeek,个股分析,行业研究,市场分析,A股,投资工具">
+    <meta name="author" content="AI投资助手">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="AI投资提示词模板库 - 专业投资分析提示词">
+    <meta property="og:description" content="专业的AI投资提示词模板库，一键复制即用">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ai-invest-prompts.com">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI投资提示词模板库">
+    <meta name="twitter:description" content="专业投资分析提示词模板">
+    
+    <link rel="canonical" href="https://ai-invest-prompts.com">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#1e40af',
+                        accent: '#3b82f6',
+                        dark: '#0f172a',
+                        muted: '#64748b',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb, #3b82f6, #1e40af);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+        }
+        
+        .template-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        
+        .template-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .template-content {
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+        }
+        
+        .category-filter {
+            transition: all 0.3s ease;
+        }
+        
+        .category-filter.active {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+        }
+        
+        .search-box {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(37, 99, 235, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .search-box:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+    </style>
+</head>
+<body class="font-inter bg-gray-50 text-gray-900">
+    
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center">
+                        <i class="fas fa-brain text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold text-gray-900">AI投资模板库</span>
+                        <p class="text-xs text-muted">专业提示词模板</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-6">
+                    <span class="text-sm text-muted">共 <span id="template-count">12</span> 个模板</span>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-robot text-primary"></i>
+                        <span class="text-sm font-medium text-gray-700">支持所有AI模型</span>
+                    </div>
+                </div>
+                
+                <a href="prompt_generator.html" class="btn-primary text-white px-6 py-2.5 rounded-xl font-semibold text-sm">
+                    <i class="fas fa-plus mr-2"></i>
+                    自定义生成
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-12 bg-gradient-to-br from-blue-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="animate-fade-in">
+                <h1 class="text-4xl md:text-6xl font-black text-gray-900 mb-6">
+                    AI投资<span class="gradient-text">提示词模板库</span>
+                </h1>
+                <p class="text-xl text-muted max-w-3xl mx-auto mb-8">
+                    精选专业投资分析提示词模板，一键复制即用，让AI成为您的专业投资分析师
+                </p>
+                
+                <!-- Search and Filter -->
+                <div class="max-w-2xl mx-auto">
+                    <div class="relative mb-6">
+                        <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-muted"></i>
+                        <input 
+                            type="text" 
+                            id="search-input"
+                            placeholder="搜索模板..." 
+                            class="search-box w-full pl-12 pr-4 py-3 rounded-xl outline-none text-gray-900"
+                        >
+                    </div>
+                    
+                    <!-- Category Filters -->
+                    <div class="flex flex-wrap justify-center gap-3 mb-8">
+                        <button class="category-filter active px-6 py-2 rounded-full font-medium border-2 border-gray-200" data-category="all">
+                            全部模板
+                        </button>
+                        <button class="category-filter px-6 py-2 rounded-full font-medium border-2 border-gray-200" data-category="stock">
+                            个股分析
+                        </button>
+                        <button class="category-filter px-6 py-2 rounded-full font-medium border-2 border-gray-200" data-category="industry">
+                            行业研究
+                        </button>
+                        <button class="category-filter px-6 py-2 rounded-full font-medium border-2 border-gray-200" data-category="market">
+                            市场分析
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Templates Grid -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="templates-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Stock Analysis Templates -->
+                <div class="template-card glass-card rounded-2xl p-6 hover-lift" data-category="stock">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-3">
+                                <i class="fas fa-chart-line text-primary text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900">个股基本面分析</h3>
+                                <p class="text-sm text-muted">深度财务数据分析</p>
+                            </div>
+                        </div>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-lg font-medium">个股分析</span>
+                    </div>
+                    <div class="template-content bg-gray-50 rounded-lg p-4 mb-4 text-sm text-gray-700">
+请作为专业股票分析师，对股票"[股票代码/名称]"进行基本面分析：
+
+1. **公司基本情况**
+   - 主营业务和商业模式
+   - 行业地位和市场份额
+   - 核心竞争优势
+
+2. **财务数据分析**
+   - 营收增长趋势
+   - 盈利能力指标(净利率、ROE、ROA)
+   - 现金流状况
+   - 资产负债结构
+
+3. **投资评估**
+   - 估值水平(PE、PB、PS)
+   - 与同行业对比
+   - 投资价值判断
+                    </div>
+                    <button class="copy-btn w-full btn-primary text-white py-2 rounded-lg font-medium">
+                        <i class="fas fa-copy mr-2"></i>复制模板
+                    </button>
+                </div>
+
+                <div class="template-card glass-card rounded-2xl p-6 hover-lift" data-category="stock">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-3">
+                                <i class="fas fa-chart-bar text-primary text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900">个股技术面分析</h3>
+                                <p class="text-sm text-muted">技术指标与趋势分析</p>
+                            </div>
+                        </div>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-lg font-medium">个股分析</span>
+                    </div>
+                    <div class="template-content bg-gray-50 rounded-lg p-4 mb-4 text-sm text-gray-700">
+请作为资深技术分析师，对股票"[股票代码/名称]"进行技术面分析：
+
+1. **价格趋势分析**
+   - 当前股价趋势方向
+   - 主要支撑位和阻力位
+   - 趋势延续性判断
+
+2. **技术指标解读**
+   - 移动平均线(MA5、MA20、MA60)
+   - MACD指标分析
+   - RSI相对强弱指标
+   - 成交量配合情况
+
+3. **操作建议**
+   - 买入卖出时机
+   - 止损止盈位设定
+   - 风险控制要点
+                    </div>
+                    <button class="copy-btn w-full btn-primary text-white py-2 rounded-lg font-medium">
+                        <i class="fas fa-copy mr-2"></i>复制模板
+                    </button>
+                </div>
+
+                <div class="template-card glass-card rounded-2xl p-6 hover-lift" data-category="stock">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-3">
+                                <i class="fas fa-calculator text-primary text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900">个股估值分析</h3>
+                                <p class="text-sm text-muted">估值模型与投资价值</p>
+                            </div>
+                        </div>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-lg font-medium">个股分析</span>
+                    </div>
+                    <div class="template-content bg-gray-50 rounded-lg p-4 mb-4 text-sm text-gray-700">
+请作为专业估值分析师，对股票"[股票代码/名称]"进行估值分析：
+
+1. **估值指标分析**
+   - 市盈率(PE)分析及合理区间
+   - 市净率(PB)与净资产价值
+   - 市销率(PS)评估
+   - PEG指标判断
+
+2. **估值方法应用**
+   - DCF现金流贴现模型
+   - 相对估值法(同行业对比)
+   - 资产重置成本法
+
+3. **投资价值判断**
+   - 当前估值水平评价
+   - 合理股价区间测算
+   - 投资安全边际分析
+                    </div>
+                    <button class="copy-btn w-full btn-primary text-white py-2 rounded-lg font-medium">
+                        <i class="fas fa-copy mr-2"></i>复制模板
+                    </button>
+                </div>
+
+                <!-- Industry Research Templates -->
+                <div class="template-card glass-card rounded-2xl p-6 hover-lift" data-category="industry">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-3">
+                                <i class="fas fa-industry text-green-600 text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900">行业发展趋势分析</h3>
+                                <p class="text-sm text-muted">行业前景与发展方向</p>
+                            </div>
+                        </div>
+                        <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-lg font-medium">行业研究</span>
+                    </div>
+                    <div class="template-content bg-gray-50 rounded-lg p-4 mb-4 text-sm text-gray-700">
+请作为资深行业研究分析师，对"[行业名称]"行业进行发展趋势分析：
+
+1. **行业现状概览**
+   - 行业规模和增长速度
+   - 产业链结构分析
+   - 发展阶段判断
+
+2. **发展趋势预测**
+   - 技术发展趋势
+   - 市场需求变化
+   - 商业模式创新
+   - 未来3-5年发展前景
+
+3. **投资机会识别**
+   - 细分领域机会
+   - 产业链投资价值
+   - 重点关注公司
+                    </div>
+                    <button class="copy-btn w-full btn-primary text-white py-2 rounded-lg font-medium">
+                        <i class="fas fa-copy mr-2"></i>复制模板
+                    </button>
+                </div>
+
+                <div class="template-card glass-card rounded-2xl p-6 hover-lift" data-category="industry">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-3">
+                                <i class="fas fa-gavel text-green-600 text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900">行业政策影响分析</h3>
+                                <p class="text-sm text-muted">政策变化对行业的影响</p>
+                            </div>
+                        </div>
+                        <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-lg font-medium">行业研究</span>
+                    </div>
+                    <div class="template-content bg-gray-50 rounded-lg p-4 mb-4 text-sm text-gray-700">
+请作为政策研究专家，分析政策对"[行业名称]"行业的影响：
+
+1. **相关政策梳理**
+   - 现行政策法规概述
+   - 最新政策变化
+   - 政策执行情况
+
+2. **政策影响分析**
+   - 对行业发展的促进作用
+   - 可能的限制和挑战
+   - 不同企业受影响程度
+
+3. **政策风险评估**
+   - 政策变化风险
+   - 合规成本分析
+   - 应对策略建议
+                    </div>
+                    <button class="copy-btn w-full btn-primary text-white py-2 rounded-lg font-medium">
+                        <i class="fas fa-copy mr-2"></i>复制模板
+                    </button>
+                </div>
+
+                <div class="template-card glass-card rounded-2xl p-6 hover-lift" data-category="industry">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-3">
+                                <i class="fas fa-users text-green-600 text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900">行业竞争格局分析</h3>
+                                <p class="text-sm text-muted">竞争态势与市场结构</p>
+                            </div>
+                        </div>
+                        <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-lg font-medium">行业研究</span>
+                    </div>
+                    <div class="template-content bg-gray-50 rounded-lg p-4 mb-4 text-sm text-gray-700">
+请作为竞争战略分析师，分析"[行业名称]"行业竞争格局：
+
+1. **市场集中度分析**
+   - 行业CR3、CR5指标
+   - 市场份额分布
+   - 集中度变化趋势
+
+2. **主要竞争者分析**
+   - 龙头企业核心优势
+   - 竞争者战略定位
+   - 竞争壁垒分析
+
+3. **竞争趋势预判**
+   - 竞争格局演变方向
+   - 新进入者威胁
+   - 整合并购可能性
+                    </div>
+                    <button class="copy-btn w-full btn-primary text-white py-2 rounded-lg font-medium">
+                        <i class="fas fa-copy mr-2"></i>复制模板
+                    </button>
+                </div>
+
+                <!-- Market Analysis Templates -->
+                <div class="template-card glass-card rounded-2xl p-6 hover-lift" data-category="market">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mr-3">
+                                <i class="fas fa-globe text-purple-600 text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900">大盘趋势分析</h3>
+                                <p class="text-sm text-muted">市场整体走势判断</p>
+                            </div>
+                        </div>
+                        <span class="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-lg font-medium">市场分析</span>
+                    </div>
+                    <div class="template-content bg-gray-50 rounded-lg p-4 mb-4 text-sm text-gray-700">
+请作为资深市场分析师，对当前A股市场进行趋势分析：
+
+1. **市场整体走势**
+   - 主要指数表现分析
+   - 市场所处阶段判断
+   - 技术面支撑阻力位
+
+2. **市场驱动因素**
+   - 宏观经济影响
+   - 政策面分析
+   - 流动性环境
+   - 外围市场影响
+
+3. **后市展望**
+   - 短期市场方向预判
+   - 中长期趋势分析
+   - 风险点提示
+                    </div>
+                    <button class="copy-btn w-full btn-primary text-white py-2 rounded-lg font-medium">
+                        <i class="fas fa-copy mr-2"></i>复制模板
+                    </button>
+                </div>
+
+                <div class="template-card glass-card rounded-2xl p-6 hover-lift" data-category="market">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mr-3">
+                                <i class="fas fa-exchange-alt text-purple-600 text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900">资金流向分析</h3>
+                                <p class="text-sm text-muted">市场资金动向追踪</p>
+                            </div>
+                        </div>
+                        <span class="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-lg font-medium">市场分析</span>
+                    </div>
+                    <div class="template-content bg-gray-50 rounded-lg p-4 mb-4 text-sm text-gray-700">
+请作为资金流向分析专家，分析当前市场资金动向：
+
+1. **主力资金动向**
+   - 北向资金进出情况
+   - 机构资金配置偏好
+   - 游资活跃度分析
+
+2. **板块资金流向**
+   - 热点板块资金净流入
+   - 冷门板块资金流出
+   - 板块轮动特征
+
+3. **资金配置建议**
+   - 当前资金偏好分析
+   - 后续关注方向
+   - 资金跟踪策略
+                    </div>
+                    <button class="copy-btn w-full btn-primary text-white py-2 rounded-lg font-medium">
+                        <i class="fas fa-copy mr-2"></i>复制模板
+                    </button>
+                </div>
+
+                <div class="template-card glass-card rounded-2xl p-6 hover-lift" data-category="market">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mr-3">
+                                <i class="fas fa-thermometer-half text-purple-600 text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900">市场情绪分析</h3>
+                                <p class="text-sm text-muted">投资者情绪与市场氛围</p>
+                            </div>
+                        </div>
+                        <span class="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-lg font-medium">市场分析</span>
+                    </div>
+                    <div class="template-content bg-gray-50 rounded-lg p-4 mb-4 text-sm text-gray-700">
+请作为市场情绪分析师，评估当前A股市场投资者情绪：
+
+1. **情绪指标分析**
+   - 恐慌贪婪指数
+   - 融资融券数据
+   - 新股申购热度
+   - 股民开户数据
+
+2. **市场氛围评估**
+   - 媒体舆论导向
+   - 投资者信心水平
+   - 风险偏好程度
+
+3. **情绪驱动因素**
+   - 政策预期影响
+   - 业绩表现影响
+   - 外部环境影响
+   - 反向指标应用
+                    </div>
+                    <button class="copy-btn w-full btn-primary text-white py-2 rounded-lg font-medium">
+                        <i class="fas fa-copy mr-2"></i>复制模板
+                    </button>
+                </div>
+
+                <div class="template-card glass-card rounded-2xl p-6 hover-lift" data-category="market">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mr-3">
+                                <i class="fas fa-shield-alt text-purple-600 text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900">投资策略制定</h3>
+                                <p class="text-sm text-muted">基于市场分析的投资建议</p>
+                            </div>
+                        </div>
+                        <span class="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-lg font-medium">市场分析</span>
+                    </div>
+                    <div class="template-content bg-gray-50 rounded-lg p-4 mb-4 text-sm text-gray-700">
+请作为投资策略专家，基于当前市场环境制定投资策略：
+
+1. **仓位配置建议**
+   - 股票仓位建议
+   - 现金配置比例
+   - 仓位调整时机
+
+2. **板块配置策略**
+   - 重点配置板块
+   - 规避板块建议
+   - 板块轮动策略
+
+3. **风险控制要点**
+   - 系统性风险防范
+   - 个股风险控制
+   - 止损止盈策略
+   - 投资纪律要求
+                    </div>
+                    <button class="copy-btn w-full btn-primary text-white py-2 rounded-lg font-medium">
+                        <i class="fas fa-copy mr-2"></i>复制模板
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Models Support -->
+    <section class="py-16 bg-gradient-to-br from-primary to-secondary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">支持所有主流AI模型</h2>
+            <p class="text-lg opacity-90 mb-12 max-w-2xl mx-auto">
+                所有模板都已优化适配，复制后即可在各种AI模型中使用
+            </p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                <div class="glass-card rounded-xl p-4 hover:bg-white/20 transition-all duration-300">
+                    <div class="text-3xl mb-2">🧠</div>
+                    <h3 class="font-bold">DeepSeek</h3>
+                    <p class="text-xs opacity-80">国产AI新星</p>
+                </div>
+                <div class="glass-card rounded-xl p-4 hover:bg-white/20 transition-all duration-300">
+                    <div class="text-3xl mb-2">💭</div>
+                    <h3 class="font-bold">ChatGPT</h3>
+                    <p class="text-xs opacity-80">OpenAI</p>
+                </div>
+                <div class="glass-card rounded-xl p-4 hover:bg-white/20 transition-all duration-300">
+                    <div class="text-3xl mb-2">🤖</div>
+                    <h3 class="font-bold">Claude</h3>
+                    <p class="text-xs opacity-80">Anthropic</p>
+                </div>
+                <div class="glass-card rounded-xl p-4 hover:bg-white/20 transition-all duration-300">
+                    <div class="text-3xl mb-2">✨</div>
+                    <h3 class="font-bold">通义千问</h3>
+                    <p class="text-xs opacity-80">阿里云</p>
+                </div>
+                <div class="glass-card rounded-xl p-4 hover:bg-white/20 transition-all duration-300">
+                    <div class="text-3xl mb-2">🔥</div>
+                    <h3 class="font-bold">文心一言</h3>
+                    <p class="text-xs opacity-80">百度</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center">
+                            <i class="fas fa-brain text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">AI投资模板库</h3>
+                            <p class="text-gray-400 text-sm">专业投资分析提示词</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed mb-4 max-w-lg">
+                        精选专业投资分析提示词模板，让每个投资者都能享受专业级的AI投资分析。
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-4">模板分类</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">个股分析</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">行业研究</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">市场分析</a></li>
+                        <li><a href="prompt_generator.html" class="hover:text-white transition-colors">自定义生成</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-4">支持模型</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>DeepSeek</li>
+                        <li>ChatGPT</li>
+                        <li>Claude</li>
+                        <li>通义千问</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400 text-sm">
+                    &copy; 2024 AI投资模板库. 保留所有权利. | 投资有风险，使用需谨慎
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+        <i class="fas fa-check mr-2"></i>
+        模板已复制到剪贴板！
+    </div>
+
+    <script>
+        // Template data and functionality
+        const templates = document.querySelectorAll('.template-card');
+        const categoryFilters = document.querySelectorAll('.category-filter');
+        const searchInput = document.getElementById('search-input');
+        const templateCount = document.getElementById('template-count');
+        const toast = document.getElementById('toast');
+
+        // Category filtering
+        categoryFilters.forEach(filter => {
+            filter.addEventListener('click', () => {
+                // Update active filter
+                categoryFilters.forEach(f => f.classList.remove('active'));
+                filter.classList.add('active');
+                
+                const category = filter.dataset.category;
+                filterTemplates(category, searchInput.value);
+            });
+        });
+
+        // Search functionality
+        searchInput.addEventListener('input', (e) => {
+            const activeCategory = document.querySelector('.category-filter.active').dataset.category;
+            filterTemplates(activeCategory, e.target.value);
+        });
+
+        // Filter templates function
+        function filterTemplates(category, searchTerm) {
+            let visibleCount = 0;
+            
+            templates.forEach(template => {
+                const templateCategory = template.dataset.category;
+                const templateText = template.textContent.toLowerCase();
+                const matchesCategory = category === 'all' || templateCategory === category;
+                const matchesSearch = searchTerm === '' || templateText.includes(searchTerm.toLowerCase());
+                
+                if (matchesCategory && matchesSearch) {
+                    template.style.display = 'block';
+                    template.classList.add('animate-fade-in');
+                    visibleCount++;
+                } else {
+                    template.style.display = 'none';
+                    template.classList.remove('animate-fade-in');
+                }
+            });
+            
+            templateCount.textContent = visibleCount;
+        }
+
+        // Copy functionality
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const templateCard = btn.closest('.template-card');
+                const templateContent = templateCard.querySelector('.template-content').textContent;
+                
+                navigator.clipboard.writeText(templateContent.trim()).then(() => {
+                    showToast();
+                }).catch(err => {
+                    console.error('复制失败:', err);
+                });
+            });
+        });
+
+        // Show toast notification
+        function showToast() {
+            toast.classList.remove('translate-x-full');
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+            }, 3000);
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animate templates on load
+            templates.forEach((template, index) => {
+                setTimeout(() => {
+                    template.classList.add('animate-fade-in');
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html> 
